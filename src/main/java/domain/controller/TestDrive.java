@@ -3,10 +3,7 @@ package main.java.domain.controller;
 import main.java.domain.model.Consulta;
 import main.java.domain.model.Paciente;
 import main.java.domain.model.enums.SimulacaoEtapa;
-import main.java.domain.service.AvatarMedico;
-import main.java.domain.service.CertificadoService;
-import main.java.domain.service.FeedbackService;
-import main.java.domain.service.SuporteService;
+import main.java.domain.service.*;
 
 public class TestDrive {
     private Paciente paciente;
@@ -15,6 +12,7 @@ public class TestDrive {
     private FeedbackService feedbackService;
     private SuporteService suporte;
     private CertificadoService certificadoService;
+    private CuidadorService cuidadorService;
 
     public TestDrive(Paciente paciente, Consulta consulta) {
         this.paciente = paciente;
@@ -23,6 +21,7 @@ public class TestDrive {
         this.feedbackService = new FeedbackService();
         this.suporte = new SuporteService();
         this.certificadoService = new CertificadoService();
+        this.cuidadorService = new CuidadorService();
     }
 
     public void iniciarSimulacao(){
@@ -53,6 +52,10 @@ public class TestDrive {
 
         if (feedbackService.isSimulacaoConcluida()) {
             certificadoService.emitirCertificado(paciente, consulta);
+
+            if (cuidadorService.temCuidadorCadastrado()) {
+                cuidadorService.notificarCuidador(paciente, consulta);
+            }
         }
     }
 
@@ -82,5 +85,37 @@ public class TestDrive {
 
     public void setAvatar(AvatarMedico avatar) {
         this.avatar = avatar;
+    }
+
+    public FeedbackService getFeedbackService() {
+        return feedbackService;
+    }
+
+    public void setFeedbackService(FeedbackService feedbackService) {
+        this.feedbackService = feedbackService;
+    }
+
+    public SuporteService getSuporte() {
+        return suporte;
+    }
+
+    public void setSuporte(SuporteService suporte) {
+        this.suporte = suporte;
+    }
+
+    public CertificadoService getCertificadoService() {
+        return certificadoService;
+    }
+
+    public void setCertificadoService(CertificadoService certificadoService) {
+        this.certificadoService = certificadoService;
+    }
+
+    public CuidadorService getCuidadorService() {
+        return cuidadorService;
+    }
+
+    public void setCuidadorService(CuidadorService cuidadorService) {
+        this.cuidadorService = cuidadorService;
     }
 }

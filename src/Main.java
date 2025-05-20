@@ -15,6 +15,8 @@ public class Main {
 
         // Criar e executar Test Drive
         TestDrive testDrive = new TestDrive(paciente, consulta);
+
+        testDrive.getCuidadorService().cadastrarCuidador("5511888888888");
         testDrive.iniciarSimulacao();
     }
 }
