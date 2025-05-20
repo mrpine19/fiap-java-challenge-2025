@@ -4,7 +4,7 @@ import main.java.domain.model.Consulta;
 import main.java.domain.model.Paciente;
 import main.java.domain.model.enums.SimulacaoEtapa;
 
-public class Suporte {
+public class SuporteService {
     public void notificarSuporte(Paciente paciente, Consulta consulta, SimulacaoEtapa etapa) {
         String mensagem = "Paciente " + paciente.getNome() +
                 " precisa de ajuda na etapa " + etapa.name() +

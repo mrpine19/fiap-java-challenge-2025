@@ -24,4 +24,8 @@ public class FeedbackService {
     public int contarTentativasFallhas() {
         return tentativasFallhas;
     }
+
+    public boolean isSimulacaoConcluida() {
+        return simulacaoConcluida;
+    }
 }

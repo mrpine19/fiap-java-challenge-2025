@@ -4,22 +4,25 @@ import main.java.domain.model.Consulta;
 import main.java.domain.model.Paciente;
 import main.java.domain.model.enums.SimulacaoEtapa;
 import main.java.domain.service.AvatarMedico;
+import main.java.domain.service.CertificadoService;
 import main.java.domain.service.FeedbackService;
-import main.java.domain.service.Suporte;
+import main.java.domain.service.SuporteService;
 
 public class TestDrive {
     private Paciente paciente;
     private Consulta consulta;
     private AvatarMedico avatar;
     private FeedbackService feedbackService;
-    private Suporte suporte;
+    private SuporteService suporte;
+    private CertificadoService certificadoService;
 
     public TestDrive(Paciente paciente, Consulta consulta) {
         this.paciente = paciente;
         this.consulta = consulta;
         this.avatar = new AvatarMedico();
         this.feedbackService = new FeedbackService();
-        this.suporte = new Suporte();
+        this.suporte = new SuporteService();
+        this.certificadoService = new CertificadoService();
     }
 
     public void iniciarSimulacao(){
@@ -46,6 +49,10 @@ public class TestDrive {
                 paciente.setEmail(resposta);
             }
 
+        }
+
+        if (feedbackService.isSimulacaoConcluida()) {
+            certificadoService.emitirCertificado(paciente, consulta);
         }
     }
 
