@@ -40,7 +40,6 @@ public class TestDrive {
 
                 if (feedbackService.contarTentativasFallhas() >= 2) {
                     suporte.notificarSuporte(paciente, consulta, simulacaoEtapa);
-                    break;
                 }
             }
 
@@ -61,6 +60,7 @@ public class TestDrive {
 
     private void executarEtapa(SimulacaoEtapa simulacaoEtapa) {
         avatar.exibirInstrucao(simulacaoEtapa);
+        AcessibilidadeService.configurarExibicao(simulacaoEtapa, paciente);
     }
 
     public Paciente getPaciente() {

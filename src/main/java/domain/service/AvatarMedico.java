@@ -20,6 +20,10 @@ public class AvatarMedico {
     public void exibirInstrucao(SimulacaoEtapa etapa) {
         System.out.println("\n=== " + etapa.name() + " ===");
         System.out.println("[AVATAR]: " + etapa.getInstrucao());
+
+        if (etapa.getArquivoImagem() != null) {
+            exibirImagemComSeta(etapa.getArquivoImagem(), etapa.getTextoImagem());
+        }
     }
 
     public String pedirRetornoUsuario(String instrucao) {
@@ -40,5 +44,9 @@ public class AvatarMedico {
 
     private void reproduzirAudio(String arquivo) {
         System.out.println("[AUDIO]: Reproduzindo " + arquivo);
+    }
+
+    private void exibirImagemComSeta(String imagem, String texto) {
+        System.out.println("[IMAGEM]: Exibindo " + imagem + " com seta: " + texto);
     }
 }

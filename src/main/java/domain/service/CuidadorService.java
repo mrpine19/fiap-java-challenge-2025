@@ -18,7 +18,7 @@ public class CuidadorService {
     public void notificarCuidador(Paciente paciente, Consulta consulta) {
         String mensagem = "O paciente " + paciente.getNome() +
                 " completou o treino para a consulta em " +
-                consulta.getData() + " com o Dr. " +
+                consulta.getData() + " com o Dr(a). " +
                 consulta.getMedico();
 
         System.out.println("[WHATSAPP CUIDADOR]: Enviando para " + numeroCuidador + ": " + mensagem);
