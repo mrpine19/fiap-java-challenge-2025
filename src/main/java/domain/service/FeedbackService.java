@@ -20,4 +20,8 @@ public class FeedbackService {
             return false;
         }
     }
+
+    public int contarTentativasFallhas() {
+        return tentativasFallhas;
+    }
 }

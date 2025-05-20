@@ -5,18 +5,21 @@ import main.java.domain.model.Paciente;
 import main.java.domain.model.enums.SimulacaoEtapa;
 import main.java.domain.service.AvatarMedico;
 import main.java.domain.service.FeedbackService;
+import main.java.domain.service.Suporte;
 
 public class TestDrive {
     private Paciente paciente;
     private Consulta consulta;
     private AvatarMedico avatar;
     private FeedbackService feedbackService;
+    private Suporte suporte;
 
     public TestDrive(Paciente paciente, Consulta consulta) {
         this.paciente = paciente;
         this.consulta = consulta;
         this.avatar = new AvatarMedico();
         this.feedbackService = new FeedbackService();
+        this.suporte = new Suporte();
     }
 
     public void iniciarSimulacao(){
@@ -32,6 +35,11 @@ public class TestDrive {
                 avatar.oferecerAjuda(simulacaoEtapa);
                 executarEtapa(simulacaoEtapa);
                 resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
+
+                if (feedbackService.contarTentativasFallhas() >= 2) {
+                    suporte.notificarSuporte(paciente, consulta, simulacaoEtapa);
+                    break;
+                }
             }
 
             if (SimulacaoEtapa.LOGIN_EMAIL == simulacaoEtapa) {
