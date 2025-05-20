@@ -4,6 +4,7 @@ public class Paciente {
     private String nome;
     private int idade;
     private String telefone;
+    private String email;
     private boolean deficienciaVisual;
     private boolean deficienciaAuditiva;
 
@@ -35,6 +36,14 @@ public class Paciente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isDeficienciaVisual() {
