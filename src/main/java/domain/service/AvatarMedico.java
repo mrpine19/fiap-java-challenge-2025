@@ -32,6 +32,12 @@ public class AvatarMedico {
         sc.nextLine();
     }
 
+    public void oferecerAjuda(SimulacaoEtapa etapa) {
+        System.out.println("[AVATAR]: Vamos tentar novamente juntos!");
+        System.out.println("[AVATAR]: " + etapa.getInstrucaoAjuda());
+        reproduzirAudio("ajuda_" + etapa.name().toLowerCase() + ".mp3");
+    }
+
     private void reproduzirAudio(String arquivo) {
         System.out.println("[AUDIO]: Reproduzindo " + arquivo);
     }

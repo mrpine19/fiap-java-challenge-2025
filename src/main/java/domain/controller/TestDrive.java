@@ -4,30 +4,40 @@ import main.java.domain.model.Consulta;
 import main.java.domain.model.Paciente;
 import main.java.domain.model.enums.SimulacaoEtapa;
 import main.java.domain.service.AvatarMedico;
+import main.java.domain.service.FeedbackService;
 
 public class TestDrive {
     private Paciente paciente;
     private Consulta consulta;
     private AvatarMedico avatar;
+    private FeedbackService feedbackService;
 
     public TestDrive(Paciente paciente, Consulta consulta) {
         this.paciente = paciente;
         this.consulta = consulta;
         this.avatar = new AvatarMedico();
+        this.feedbackService = new FeedbackService();
     }
 
     public void iniciarSimulacao(){
+        String resposta;
         avatar.iniciarSaudacao(paciente);
 
         for (SimulacaoEtapa simulacaoEtapa : SimulacaoEtapa.values()) {
             executarEtapa(simulacaoEtapa);
 
+            resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
+
+            while (!feedbackService.obterFeedback(simulacaoEtapa.getDescricaoFeedback())){
+                avatar.oferecerAjuda(simulacaoEtapa);
+                executarEtapa(simulacaoEtapa);
+                resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
+            }
+
             if (SimulacaoEtapa.LOGIN_EMAIL == simulacaoEtapa) {
-                paciente.setEmail(avatar.pedirRetornoUsuario(SimulacaoEtapa.LOGIN_EMAIL.getSegunda_instrucao()));
+                paciente.setEmail(resposta);
             }
-            if (SimulacaoEtapa.LOGIN_SENHA == simulacaoEtapa) {
-                avatar.pedirRetornoUsuarioVoid(SimulacaoEtapa.LOGIN_EMAIL.getSegunda_instrucao());
-            }
+
         }
     }
 
