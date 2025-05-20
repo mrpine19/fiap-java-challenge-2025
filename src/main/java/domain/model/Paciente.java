@@ -1,50 +1,55 @@
 package main.java.domain.model;
 
-public class Paciente extends Usuario {
+public class Paciente {
+    private String nome;
+    private int idade;
+    private String telefone;
+    private boolean deficienciaVisual;
+    private boolean deficienciaAuditiva;
 
-    private String contatoWhatsapp;
-    private boolean possuiDeficiencia;
-    private String afinidadeDigital;
-    private String historicoMedico;
-    private int historicoFalhas;
-
-    public String getContatoWhatsapp() {
-        return contatoWhatsapp;
+    public Paciente(String nome, int idade, String telefone) {
+        this.nome = nome;
+        this.idade = idade;
+        this.telefone = telefone;
     }
 
-    public void setContatoWhatsapp(String contatoWhatsapp) {
-        this.contatoWhatsapp = contatoWhatsapp;
+    public String getNome() {
+        return nome;
     }
 
-    public boolean isPossuiDeficiencia() {
-        return possuiDeficiencia;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setPossuiDeficiencia(boolean possuiDeficiencia) {
-        this.possuiDeficiencia = possuiDeficiencia;
+    public int getIdade() {
+        return idade;
     }
 
-    public String getAfinidadeDigital() {
-        return afinidadeDigital;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
-    public void setAfinidadeDigital(String afinidadeDigital) {
-        this.afinidadeDigital = afinidadeDigital;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getHistoricoMedico() {
-        return historicoMedico;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public void setHistoricoMedico(String historicoMedico) {
-        this.historicoMedico = historicoMedico;
+    public boolean isDeficienciaVisual() {
+        return deficienciaVisual;
     }
 
-    public int getHistoricoFalhas() {
-        return historicoFalhas;
+    public void setDeficienciaVisual(boolean deficienciaVisual) {
+        this.deficienciaVisual = deficienciaVisual;
     }
 
-    public void setHistoricoFalhas(int historicoFalhas) {
-        this.historicoFalhas = historicoFalhas;
+    public boolean isDeficienciaAuditiva() {
+        return deficienciaAuditiva;
+    }
+
+    public void setDeficienciaAuditiva(boolean deficienciaAuditiva) {
+        this.deficienciaAuditiva = deficienciaAuditiva;
     }
 }

@@ -3,40 +3,37 @@ package main.java.domain.model;
 import java.time.LocalDateTime;
 
 public class Consulta {
-    private int idConsulta;
-    private LocalDateTime dataHoraConsulta;
-    private String status;
-    private String linkTeleconsulta;
+    private String medico;
+    private String especialidade;
+    private LocalDateTime data;
 
-    public int getIdConsulta() {
-        return idConsulta;
+    public Consulta(String medico, String especialidade, LocalDateTime data) {
+        this.medico = medico;
+        this.especialidade = especialidade;
+        this.data = data;
     }
 
-    public void setIdConsulta(int idConsulta) {
-        this.idConsulta = idConsulta;
+    public String getMedico() {
+        return medico;
     }
 
-    public LocalDateTime getDataHoraConsulta() {
-        return dataHoraConsulta;
+    public void setMedico(String medico) {
+        this.medico = medico;
     }
 
-    public void setDataHoraConsulta(LocalDateTime dataHoraConsulta) {
-        this.dataHoraConsulta = dataHoraConsulta;
+    public String getEspecialidade() {
+        return especialidade;
     }
 
-    public String getStatus() {
-        return status;
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public LocalDateTime getData() {
+        return data;
     }
 
-    public String getLinkTeleconsulta() {
-        return linkTeleconsulta;
-    }
-
-    public void setLinkTeleconsulta(String linkTeleconsulta) {
-        this.linkTeleconsulta = linkTeleconsulta;
+    public void setData(LocalDateTime data) {
+        this.data = data;
     }
 }
