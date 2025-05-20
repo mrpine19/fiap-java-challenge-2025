@@ -25,18 +25,21 @@ public class TestDrive {
     }
 
     public void iniciarSimulacao(){
-        String resposta;
+        String resposta = "";
         avatar.iniciarSaudacao(paciente);
 
         for (SimulacaoEtapa simulacaoEtapa : SimulacaoEtapa.values()) {
             executarEtapa(simulacaoEtapa);
 
-            resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
+            if (!simulacaoEtapa.getSegundaInstrucao().isEmpty())
+                resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
 
             while (!feedbackService.obterFeedback(simulacaoEtapa.getDescricaoFeedback())){
                 avatar.oferecerAjuda(simulacaoEtapa);
                 executarEtapa(simulacaoEtapa);
-                resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
+
+                if (!simulacaoEtapa.getSegundaInstrucao().isEmpty())
+                    resposta = avatar.pedirRetornoUsuario(simulacaoEtapa.getSegundaInstrucao());
 
                 if (feedbackService.contarTentativasFallhas() >= 2) {
                     suporte.notificarSuporte(paciente, consulta, simulacaoEtapa);

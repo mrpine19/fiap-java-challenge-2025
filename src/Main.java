@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
 public class Main {
     public static void main(String[] args) {
         Paciente paciente = new Paciente("Maria Silva", 50, "5511999999999");
-        paciente.setDeficienciaVisual(false);
+        paciente.setDeficienciaVisual(true);
+        paciente.setDeficienciaAuditiva(false);
 
         Consulta consulta = new Consulta("João Carlos", "Cardiologia", LocalDateTime.now().plusDays(1));
 
