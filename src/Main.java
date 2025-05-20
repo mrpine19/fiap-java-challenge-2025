@@ -1,7 +1,6 @@
 import main.java.domain.controller.TestDrive;
 import main.java.domain.model.Consulta;
 import main.java.domain.model.Paciente;
-import main.java.domain.service.AvatarMedico;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +16,7 @@ public class Main {
         // Criar e executar Test Drive
         TestDrive testDrive = new TestDrive(paciente, consulta);
 
-        testDrive.getCuidadorService().cadastrarCuidador("5511888888888");
+        testDrive.getCuidadorService().cadastrarCuidador("Albertinho Matos");
         testDrive.iniciarSimulacao();
     }
 }
